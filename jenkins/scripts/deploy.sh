@@ -2,7 +2,11 @@
 # changes
 # 
 set -x
-docker run -d -p 80:80 --name my-apache-php-app -v /var/jenkins_home/workspace/lab-x07b/src⁠:/var/www/html php:7.2-apache
+# Connect the Apache container to the existing network
+docker run -d -p 8888:80 --name my-apache-php-app-2 -v
+/var/jenkins_home/workspace/Test-Pipeline-2/src:/var/www/html --network
+jenkins_network php:7.2-apache
+
 sleep 1
 set +x
 
